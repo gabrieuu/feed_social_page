@@ -1,6 +1,7 @@
 import 'package:feed_social_page/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/service/posts.service.dart';
 import 'package:feed_social_page/store/posts_controller.dart';
+import 'package:feed_social_page/utils/colors_app.dart';
 import 'package:feed_social_page/view/details_post_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final controller = PostController(service: PostService(DioClient()));
-  
+
   @override
   Widget build(BuildContext context) {
 
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.all(16),
             height: 120,
             decoration: BoxDecoration(
-                color: Colors.purple,
+                color: ColorApp.lightBlue,
                 borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(20),
                     bottomLeft: Radius.circular(20))),

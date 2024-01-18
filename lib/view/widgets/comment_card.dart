@@ -10,19 +10,18 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CommentsCard extends StatelessWidget {
   CommentsCard({super.key, required this.commentModel});
   
-
   CommentsModel commentModel;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(40),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 40,
-                  width: 40,
+                  height: 35,
+                  width: 35,
                   decoration: BoxDecoration(
                       color: Colors.red, borderRadius: BorderRadius.circular(50)),
                   child: Center(

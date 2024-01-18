@@ -1,6 +1,7 @@
 import 'package:feed_social_page/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/service/posts.service.dart';
 import 'package:feed_social_page/store/posts_controller.dart';
+import 'package:feed_social_page/view/bottom_bar.dart';
 import 'package:feed_social_page/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
               backgroundColor: Color.fromARGB(255, 245, 245, 245)),
           useMaterial3: true,
         ),
-        home: HomePage());
+        home: BottomBar());
   }
 }

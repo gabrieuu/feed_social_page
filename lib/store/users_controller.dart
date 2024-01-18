@@ -9,7 +9,7 @@ class UserController = _UserControllerBase with _$UserController;
 abstract class _UserControllerBase with Store {
 
   UserService service = UserService(client: DioClient());
-
+  
   Future<UserModel> initController(int id) async{
     return await service.getUserById(id);
   }
