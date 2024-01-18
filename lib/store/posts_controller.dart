@@ -1,4 +1,5 @@
 import 'package:feed_social_page/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/model/comments.model.dart';
 import 'package:feed_social_page/model/posts.model.dart';
 import 'package:feed_social_page/service/posts.service.dart';
 import 'package:mobx/mobx.dart';
@@ -22,4 +23,10 @@ abstract class _PostControllerBase with Store {
     var postagens = await service.fetchAllPosts();
     posts.addAll(postagens);
   }
+
+  Future<List<CommentsModel>> getComments(int postId) async{
+    var listComments = service.fetchCommentsPosts(postId);
+    return listComments;
+  }
+
 }

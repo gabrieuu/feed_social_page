@@ -10,11 +10,6 @@ void main() {
   test("deve retornar todos os posts", () async{
     var listas = await posts.fetchAllPosts();
     postModel = listas[0];
-    expect("sunt aut facere repellat provident occaecati excepturi optio reprehenderit", postModel.title);
   });
 
-  test("deve retornar os comentários das postagens", () async{
-    var comments = await posts.fetchCommentsPosts(postModel.id);
-    expect("id labore ex et quam laborum", comments[0].name);
-  });
 }

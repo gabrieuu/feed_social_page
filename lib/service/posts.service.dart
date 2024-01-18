@@ -11,6 +11,7 @@ class PostService{
 
   Future<List<PostModel>> fetchAllPosts() async{
     const url = "https://jsonplaceholder.typicode.com/posts";
+    
     final response = await client.get(url) as List;
     return response.map((e) => PostModel.fromMap(e)).toList();
   }

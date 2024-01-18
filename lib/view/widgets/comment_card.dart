@@ -1,28 +1,21 @@
 import 'package:feed_social_page/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/model/comments.model.dart';
-import 'package:feed_social_page/model/posts.model.dart';
-import 'package:feed_social_page/model/user.model.dart';
-import 'package:feed_social_page/service/user.service.dart';
+import 'package:feed_social_page/service/posts.service.dart';
+import 'package:feed_social_page/store/posts_controller.dart';
 import 'package:feed_social_page/store/users_controller.dart';
-import 'package:feed_social_page/view/details_post_page.dart';
 import 'package:feed_social_page/view/widgets/shimmer_posts.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PostCard extends StatelessWidget {
-  PostCard({super.key, required this.postModel});
+class CommentsCard extends StatelessWidget {
+  CommentsCard({super.key, required this.commentModel});
+  
 
-  PostModel postModel;
-  final userController = UserController();
+  CommentsModel commentModel;
 
   @override
-  Widget build(BuildContext context) { 
-    return FutureBuilder(future: userController.initController(postModel.userId), builder: (_, value){
-      if(value.connectionState == ConnectionState.done){
-        var userModel = value.data!;
-        return Padding(
+  Widget build(BuildContext context) {
+    return Padding(
             padding: const EdgeInsets.all(20),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +27,7 @@ class PostCard extends StatelessWidget {
                       color: Colors.red, borderRadius: BorderRadius.circular(50)),
                   child: Center(
                       child: Text(
-                    "${userModel.username[0]}",
+                    "${commentModel.email[0]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   )),
                 ),
@@ -47,7 +40,7 @@ class PostCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                          Text("${userModel.username}", style: TextStyle(fontWeight: FontWeight.w600),),
+                          Text("${commentModel.email}", style: TextStyle(fontWeight: FontWeight.w600),),
                           InkWell(
                             onTap: (){},
                             borderRadius: BorderRadius.circular(50),
@@ -55,7 +48,7 @@ class PostCard extends StatelessWidget {
                         ],),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 3),
-                          child: Text("${postModel.body}"),
+                          child: Text("${commentModel.body}"),
                         ),
                         Row(
                           children: [
@@ -79,15 +72,11 @@ class PostCard extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 10,),
-                        Text("5 comments", style: TextStyle(color: Colors.grey),)
                       ],
                     ),
                   ),
                 )
               ],
             ));
-      }
-      return ShimmerPost();
-    });
   }
 }
