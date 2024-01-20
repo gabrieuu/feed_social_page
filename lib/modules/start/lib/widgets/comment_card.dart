@@ -36,7 +36,7 @@ class CommentsCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                          Text("${commentModel.email}", style: const TextStyle(fontWeight: FontWeight.w600),),
+                          Text(commentModel.email.split("@")[0], style: const TextStyle(fontWeight: FontWeight.w600),),
                           InkWell(
                             onTap: (){},
                             borderRadius: BorderRadius.circular(50),
