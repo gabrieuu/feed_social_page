@@ -1,9 +1,10 @@
-import 'package:feed_social_page/modules/home/lib/views/comments_page.dart';
-import 'package:feed_social_page/modules/home/lib/views/initial_page.dart';
-import 'package:feed_social_page/modules/home/lib/views/profile_page.dart';
+
+import 'package:feed_social_page/modules/start/lib/views/comments_page.dart';
+import 'package:feed_social_page/modules/start/lib/views/initial_page.dart';
+import 'package:feed_social_page/modules/start/lib/views/profile_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class HomeModule extends Module{
+class StartModule extends Module{
 
   @override
   void routes(RouteManager r) {

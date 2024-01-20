@@ -36,7 +36,7 @@ class ShimmerPost extends StatelessWidget {
                        Container(
                               height: 20,
                               width: 100,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 144, 147, 173)
                               ),
                         ),
@@ -48,47 +48,47 @@ class ShimmerPost extends StatelessWidget {
                             Container(
                               height: 20,
                               width: textWidth,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 144, 147, 173)
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Container(
                               height: 20,
                               width: textWidth,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 144, 147, 173)
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Container(
                               height: 20,
                               width: textWidth,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 144, 147, 173)
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Container(
                               height: 20,
                               width: textWidth,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 144, 147, 173)
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Container(
                               height: 20,
                               width: textWidth,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.grey
                               ),
                             )
@@ -100,24 +100,24 @@ class ShimmerPost extends StatelessWidget {
                           InkWell(
                             onTap: (){},
                             borderRadius: BorderRadius.circular(50),
-                            child: Icon(Icons.favorite_border_outlined),
+                            child: const Icon(Icons.favorite_border_outlined),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           InkWell(
                             onTap: (){},
                             borderRadius: BorderRadius.circular(50),
-                            child: FaIcon(FontAwesomeIcons.comments,size: 20,),
+                            child: const FaIcon(FontAwesomeIcons.comments,size: 20,),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           InkWell(
                             onTap: (){},
                             borderRadius: BorderRadius.circular(50),
-                            child: FaIcon(FontAwesomeIcons.retweet, size: 22),
+                            child: const FaIcon(FontAwesomeIcons.retweet, size: 22),
                           ),                                          
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Text("20 comments", style: TextStyle(color: Colors.grey),)
+                      const SizedBox(height: 10,),
+                      const Text("20 comments", style: TextStyle(color: Colors.grey),)
                     ],
                   ),
                 ),

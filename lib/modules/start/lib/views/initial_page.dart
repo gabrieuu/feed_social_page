@@ -1,25 +1,34 @@
+import 'package:feed_social_page/core/splash_screen.dart';
+import 'package:feed_social_page/modules/start/lib/store/posts_controller.dart';
+import 'package:feed_social_page/modules/start/lib/views/home_page.dart';
 import 'package:feed_social_page/utils/colors_app.dart';
-import 'package:feed_social_page/modules/home/lib/views/home_page.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class InitialPage extends StatelessWidget {
-  
+  InitialPage({super.key});
+
+  final controller = Modular.get<PostController>();
+
     @override
     Widget build(BuildContext context) {
-      return DefaultTabController(
+      return Observer(builder: (_) => (controller.commentsLoading)
+      ? SplashScreen()
+      : DefaultTabController(
           length: 3,
           child: Scaffold(
             bottomNavigationBar: menu(),
             body: TabBarView(
               children: [
                 HomePage(),
-                Center(child: Text("Tela em construção..."),),
-                Center(child: Text("Tela em construção..."),)
+                const Center(child: Text("Tela em construção..."),),
+                const Center(child: Text("Tela em construção..."),)
               ],
             ),
           ),
-        );
+        ),
+      );
     }
 
      Widget menu() {
@@ -27,13 +36,13 @@ class InitialPage extends StatelessWidget {
         color: ColorApp.appBarColor,
         child: TabBar(
           labelColor: ColorApp.bgPrimary,
-          unselectedLabelColor: Color.fromARGB(255, 212, 208, 213),
+          unselectedLabelColor: const Color.fromARGB(255, 212, 208, 213),
           indicatorSize: TabBarIndicatorSize.tab,
-          indicatorPadding: EdgeInsets.all(5.0),
-          labelPadding: EdgeInsets.all(10),
+          indicatorPadding: const EdgeInsets.all(5.0),
+          labelPadding: const EdgeInsets.all(10),
           dividerHeight: 0,
           indicatorColor: Colors.transparent,
-          tabs: [
+          tabs: const [
             Tab(
               icon: Icon(Icons.home_outlined),
             ),

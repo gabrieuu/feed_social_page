@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
-              backgroundColor: Color.fromARGB(255, 245, 245, 245)),
+              backgroundColor: const Color.fromARGB(255, 245, 245, 245)),
           useMaterial3: true,
         ),
         routerConfig: Modular.routerConfig,

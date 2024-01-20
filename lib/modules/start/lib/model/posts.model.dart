@@ -1,6 +1,4 @@
-import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
-import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
-import 'package:flutter/material.dart';
+import 'package:feed_social_page/modules/start/lib/model/comments.model.dart';
 
 class PostModel {
   int userId;

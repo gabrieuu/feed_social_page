@@ -1,17 +1,9 @@
-import 'dart:math';
 
-import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
-import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
-import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
-import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
-import 'package:feed_social_page/modules/home/lib/service/user.service.dart';
-import 'package:feed_social_page/modules/home/lib/store/users_controller.dart';
-import 'package:feed_social_page/modules/home/lib/views/comments_page.dart';
-import 'package:feed_social_page/modules/home/lib/views/profile_page.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/shimmer_posts.dart';
-import 'package:flutter/foundation.dart';
+import 'package:feed_social_page/modules/start/lib/model/posts.model.dart';
+import 'package:feed_social_page/modules/start/lib/store/users_controller.dart';
+import 'package:feed_social_page/modules/start/lib/views/comments_page.dart';
+import 'package:feed_social_page/modules/start/lib/widgets/shimmer_posts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -65,7 +57,7 @@ class _PostCardState extends State<PostCard> {
                       child: Center(
                           child: Text(
                         "${userController.userModel?.username[0]}",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: const TextStyle(fontSize: 20, color: Colors.white),
                       )),
                     ),
                   ),
@@ -80,12 +72,12 @@ class _PostCardState extends State<PostCard> {
                             children: [
                               Text(
                                 "${userController.userModel?.username}",
-                                style: TextStyle(fontWeight: FontWeight.w600),
+                                style: const TextStyle(fontWeight: FontWeight.w600),
                               ),
                               InkWell(
                                   onTap: () {},
                                   borderRadius: BorderRadius.circular(50),
-                                  child: Icon(Icons.more_horiz))
+                                  child: const Icon(Icons.more_horiz))
                             ],
                           ),
                           Padding(
@@ -100,15 +92,15 @@ class _PostCardState extends State<PostCard> {
                                 },
                                 borderRadius: BorderRadius.circular(50),
                                 child: (userController.postLike)
-                                    ? Icon(
+                                    ? const Icon(
                                         Icons.favorite,
                                         color: Colors.red,
                                       )
-                                    : Icon(
+                                    : const Icon(
                                         Icons.favorite_border_outlined,
                                       ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               InkWell(
@@ -120,25 +112,25 @@ class _PostCardState extends State<PostCard> {
                                               postModel: widget.postModel)));
                                 },
                                 borderRadius: BorderRadius.circular(50),
-                                child: FaIcon(
+                                child: const FaIcon(
                                   FontAwesomeIcons.comments,
                                   size: 20,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               InkWell(
                                 onTap: () {},
                                 borderRadius: BorderRadius.circular(50),
-                                child: FaIcon(FontAwesomeIcons.retweet, size: 22),
+                                child: const FaIcon(FontAwesomeIcons.retweet, size: 22),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             "5 comments",
                             style: TextStyle(color: Colors.grey),
                           )
@@ -150,7 +142,7 @@ class _PostCardState extends State<PostCard> {
               )),
         );
       } else {
-        return Center(child: Text("Error loading user"));
+        return const Center(child: Text("Error loading user"));
       }
     });
   }

@@ -1,8 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:feed_social_page/core/client_http/client_http.dart';
-import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
-import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
-import 'package:feed_social_page/modules/home/lib/service/comment_service.dart';
+import 'package:feed_social_page/modules/start/lib/model/posts.model.dart';
 
 
 class PostService{

@@ -1,5 +1,5 @@
 import 'package:feed_social_page/core/client_http/client_http.dart';
-import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
+import 'package:feed_social_page/modules/start/lib/model/user.model.dart';
 
 class UserService{
 

@@ -1,7 +1,7 @@
 import 'package:feed_social_page/core/modules/comment_module.dart';
 import 'package:feed_social_page/core/modules/post_module.dart';
 import 'package:feed_social_page/core/modules/user_module.dart';
-import 'package:feed_social_page/modules/home/home_module.dart';
+import 'package:feed_social_page/modules/start/start_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module{
@@ -15,6 +15,6 @@ class AppModule extends Module{
   
   @override
   void routes(RouteManager r) {
-    r.module("/home", module: HomeModule());
+    r.module("/home", module: StartModule());
   }
 }

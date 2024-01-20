@@ -1,17 +1,13 @@
-import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
-import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
-import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
-import 'package:feed_social_page/modules/home/lib/service/comment_service.dart';
-import 'package:feed_social_page/modules/home/lib/service/posts.service.dart';
-import 'package:feed_social_page/modules/home/lib/store/comment_controller.dart';
+
+import 'package:feed_social_page/modules/start/lib/model/posts.model.dart';
+import 'package:feed_social_page/modules/start/lib/store/comment_controller.dart';
+import 'package:feed_social_page/modules/start/lib/widgets/comment_card.dart';
+import 'package:feed_social_page/modules/start/lib/widgets/post_card.dart';
+import 'package:feed_social_page/modules/start/lib/widgets/shimmer_posts.dart';
 import 'package:feed_social_page/utils/colors_app.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/comment_card.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/post_card.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/shimmer_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:provider/provider.dart';
 
 class CommentPage extends StatefulWidget {
   CommentPage({super.key, required this.postModel});
@@ -38,15 +34,15 @@ class _CommentPageState extends State<CommentPage> {
       backgroundColor: ColorApp.bgPrimary,
       appBar: AppBar(
         backgroundColor: ColorApp.appBarColor,
-        iconTheme: IconThemeData(color: Colors.white),
-        leading: IconButton(onPressed: () => Modular.to.pop(), icon: Icon(Icons.arrow_back)),
+        iconTheme: const IconThemeData(color: Colors.white),
+        leading: IconButton(onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back)),
       ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white38,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
@@ -75,7 +71,7 @@ class _CommentPageState extends State<CommentPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(50)),
@@ -84,13 +80,13 @@ class _CommentPageState extends State<CommentPage> {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Digite um comentário...",
-                      hintStyle: TextStyle(fontSize: 14),
+                      hintStyle: const TextStyle(fontSize: 14),
                       suffixIcon: IconButton(
                         onPressed: () {
                           commentController.addComment(widget.postModel.id);
                           commentController.commentTxt.clear();
                         },
-                        icon: Icon(Icons.send, color: Colors.grey),
+                        icon: const Icon(Icons.send, color: Colors.grey),
                       )),
                 ),
               ),

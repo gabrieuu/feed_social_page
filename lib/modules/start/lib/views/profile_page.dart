@@ -1,11 +1,10 @@
-import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
-import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
-import 'package:feed_social_page/modules/home/lib/store/posts_controller.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/post_card.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/shimmer_posts.dart';
+import 'package:feed_social_page/modules/start/lib/model/posts.model.dart';
+import 'package:feed_social_page/modules/start/lib/model/user.model.dart';
+import 'package:feed_social_page/modules/start/lib/store/posts_controller.dart';
+import 'package:feed_social_page/modules/start/lib/widgets/post_card.dart';
+import 'package:feed_social_page/modules/start/lib/widgets/shimmer_posts.dart';
 import 'package:feed_social_page/utils/colors_app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -26,13 +25,13 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: ColorApp.appBarColor,
         leading: IconButton(
-            onPressed: () => Modular.to.pop(), icon: Icon(Icons.arrow_back)),
+            onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back)),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Container(
+            child: SizedBox(
               height: 100,
               child: Row(
                 children: [
@@ -45,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Center(
                         child: Text(widget.userModel.username[0], style: TextStyle(fontSize: 40 ,color: ColorApp.bgPrimary),)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -54,7 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Text(
                         widget.userModel.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       Text(
@@ -73,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
-          Divider(color: Colors.grey,),
+          const Divider(color: Colors.grey,),
           Expanded(
                 child: FutureBuilder(
                     future:

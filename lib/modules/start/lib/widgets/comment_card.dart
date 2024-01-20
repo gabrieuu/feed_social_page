@@ -1,7 +1,5 @@
-import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
-import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
-import 'package:feed_social_page/modules/home/lib/service/posts.service.dart';
-import 'package:feed_social_page/modules/home/lib/widgets/shimmer_posts.dart';
+
+import 'package:feed_social_page/modules/start/lib/model/comments.model.dart';
 import 'package:feed_social_page/utils/colors_app.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,7 +24,7 @@ class CommentsCard extends StatelessWidget {
                   child: Center(
                       child: Text(
                     "${commentModel.email[0]}",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
                   )),
                 ),
                 Expanded(
@@ -38,11 +36,11 @@ class CommentsCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                          Text("${commentModel.email}", style: TextStyle(fontWeight: FontWeight.w600),),
+                          Text("${commentModel.email}", style: const TextStyle(fontWeight: FontWeight.w600),),
                           InkWell(
                             onTap: (){},
                             borderRadius: BorderRadius.circular(50),
-                            child: Icon(Icons.more_horiz))
+                            child: const Icon(Icons.more_horiz))
                         ],),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 3),
@@ -53,23 +51,23 @@ class CommentsCard extends StatelessWidget {
                             InkWell(
                               onTap: (){},
                               borderRadius: BorderRadius.circular(50),
-                              child: Icon(Icons.favorite_border_outlined),
+                              child: const Icon(Icons.favorite_border_outlined),
                             ),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                             InkWell(
                               onTap: (){},
                               borderRadius: BorderRadius.circular(50),
-                              child: FaIcon(FontAwesomeIcons.comments,size: 20,),
+                              child: const FaIcon(FontAwesomeIcons.comments,size: 20,),
                             ),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                             InkWell(
                               onTap: (){},
                               borderRadius: BorderRadius.circular(50),
-                              child: FaIcon(FontAwesomeIcons.retweet, size: 22),
+                              child: const FaIcon(FontAwesomeIcons.retweet, size: 22),
                             ),                                          
                           ],
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                       ],
                     ),
                   ),

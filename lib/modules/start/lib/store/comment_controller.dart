@@ -1,6 +1,5 @@
-import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
-import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
-import 'package:feed_social_page/modules/home/lib/service/comment_service.dart';
+import 'package:feed_social_page/modules/start/lib/model/comments.model.dart';
+import 'package:feed_social_page/modules/start/lib/service/comment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'comment_controller.g.dart';
