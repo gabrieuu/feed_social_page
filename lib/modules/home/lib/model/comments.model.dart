@@ -1,13 +1,13 @@
 class CommentsModel {
   int postId;
-  int id;
+  int? id;
   String name;
   String email;
   String body;
 
   CommentsModel(
       {required this.postId,
-      required this.id,
+      this.id,
       required this.name,
       required this.email,
       required this.body});
@@ -20,5 +20,14 @@ class CommentsModel {
       email: map["email"],
       body: map["body"],
     );
+  }
+
+  Map<String, dynamic> toMap(){
+    return {
+      "postId": postId,
+      "name": name,
+      "email": email,
+      "body": body
+    };
   }
 }

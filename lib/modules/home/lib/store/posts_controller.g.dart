@@ -25,10 +25,27 @@ mixin _$PostController on _PostControllerBase, Store {
     });
   }
 
+  late final _$commentsLoadingAtom =
+      Atom(name: '_PostControllerBase.commentsLoading', context: context);
+
+  @override
+  bool get commentsLoading {
+    _$commentsLoadingAtom.reportRead();
+    return super.commentsLoading;
+  }
+
+  @override
+  set commentsLoading(bool value) {
+    _$commentsLoadingAtom.reportWrite(value, super.commentsLoading, () {
+      super.commentsLoading = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-posts: ${posts}
+posts: ${posts},
+commentsLoading: ${commentsLoading}
     ''';
   }
 }

@@ -1,8 +1,8 @@
 import 'package:feed_social_page/utils/colors_app.dart';
-import 'package:feed_social_page/view/home_page.dart';
+import 'package:feed_social_page/modules/home/lib/views/home_page.dart';
 import 'package:flutter/material.dart';
 
-class BottomBar extends StatelessWidget {
+class InitialPage extends StatelessWidget {
   
     @override
     Widget build(BuildContext context) {
@@ -13,8 +13,8 @@ class BottomBar extends StatelessWidget {
             body: TabBarView(
               children: [
                 HomePage(),
-                Container(child: Icon(Icons.chat)),
-                Container(child: Icon(Icons.person)),
+                Center(child: Text("Tela em construção..."),),
+                Center(child: Text("Tela em construção..."),)
               ],
             ),
           ),

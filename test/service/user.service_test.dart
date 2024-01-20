@@ -1,6 +1,6 @@
-import 'package:feed_social_page/client_http/dio_client/dio_client.dart';
-import 'package:feed_social_page/model/user.model.dart';
-import 'package:feed_social_page/service/user.service.dart';
+import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
+import 'package:feed_social_page/modules/home/lib/service/user.service.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

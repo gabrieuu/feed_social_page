@@ -1,5 +1,5 @@
-import 'package:feed_social_page/model/comments.model.dart';
-import 'package:feed_social_page/model/user.model.dart';
+import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
+import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
 import 'package:flutter/material.dart';
 
 class PostModel {
@@ -7,6 +7,7 @@ class PostModel {
   int id;
   String title;
   String body;
+  List<CommentsModel> comments = [];
   
   PostModel(
       {required this.userId,

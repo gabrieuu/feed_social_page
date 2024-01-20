@@ -1,9 +1,7 @@
-import 'package:feed_social_page/client_http/dio_client/dio_client.dart';
-import 'package:feed_social_page/model/comments.model.dart';
-import 'package:feed_social_page/service/posts.service.dart';
-import 'package:feed_social_page/store/posts_controller.dart';
-import 'package:feed_social_page/store/users_controller.dart';
-import 'package:feed_social_page/view/widgets/shimmer_posts.dart';
+import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
+import 'package:feed_social_page/modules/home/lib/service/posts.service.dart';
+import 'package:feed_social_page/modules/home/lib/widgets/shimmer_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
