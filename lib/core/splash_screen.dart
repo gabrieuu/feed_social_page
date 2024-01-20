@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: ColorApp.lightBlue
+          color: ColorApp.appBarColor
         ),
         child: Center(
           child: Row(

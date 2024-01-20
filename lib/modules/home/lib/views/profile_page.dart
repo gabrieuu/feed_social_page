@@ -24,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorApp.lightBlue,
+        backgroundColor: ColorApp.appBarColor,
         leading: IconButton(
             onPressed: () => Modular.to.pop(), icon: Icon(Icons.arrow_back)),
       ),
@@ -40,13 +40,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-                        color: ColorApp.bgGreyDark,
+                        color: Colors.purple,
                         borderRadius: BorderRadius.circular(50)),
-                    child: const Center(
-                        child: Icon(
-                      Icons.person,
-                      size: 40,
-                    )),
+                    child: Center(
+                        child: Text(widget.userModel.username[0], style: TextStyle(fontSize: 40 ,color: ColorApp.bgPrimary),)),
                   ),
                   SizedBox(
                     width: 10,
@@ -68,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Text(
                         widget.userModel.email,
-                        style: TextStyle(color: ColorApp.darkBlue),
+                        style: TextStyle(color: ColorApp.secondColor),
                       )
                     ],
                   )
@@ -76,6 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
+          Divider(color: Colors.grey,),
           Expanded(
                 child: FutureBuilder(
                     future:
@@ -86,7 +84,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         return ListView.builder(
                             itemCount: posts.length,
                             itemBuilder: (_, index) {
-                              return PostCard(postModel: posts[index]);
+                              return Column(
+                                children: [
+                                  PostCard(
+                                    colorProfile: Colors.purple,
+                                    postModel: posts[index]),
+                                  Divider(color: Colors.grey[300],)
+                                ],
+                              );
                             });
                       }else{
                       return ShimmerPost();

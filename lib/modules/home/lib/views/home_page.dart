@@ -1,4 +1,4 @@
-import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/modules/home/lib/service/posts.service.dart';
 import 'package:feed_social_page/modules/home/lib/store/posts_controller.dart';
 import 'package:feed_social_page/utils/colors_app.dart';
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.all(16),
             height: 120,
             decoration: BoxDecoration(
-                color: ColorApp.lightBlue,
+                color: ColorApp.appBarColor,
                 borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(20),
                     bottomLeft: Radius.circular(20))),
@@ -52,8 +52,10 @@ class HomePage extends StatelessWidget {
                   children: List.generate(controller.posts.length, (index) {
                     return Column(
                         children: [
-                          PostCard(postModel: controller.posts[index]),
-                          Divider(color: Colors.grey[300],)
+                          PostCard(
+                            colorProfile: ColorApp.ramdomColor,
+                            postModel: controller.posts[index]),
+                          Divider(color: Colors.grey,)
                         ],
                       );
                   }),

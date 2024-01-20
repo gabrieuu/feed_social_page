@@ -14,7 +14,7 @@ class CommentsModel {
 
   static CommentsModel fromMap(Map<String, dynamic> map) {
     return CommentsModel(
-      postId: map["postId"],
+      postId: (map["postId"].runtimeType == int) ? map["postId"] : int.parse(map["postId"]),
       id: map["id"],
       name: map["name"],
       email: map["email"],

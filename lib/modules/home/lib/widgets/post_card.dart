@@ -1,4 +1,6 @@
-import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'dart:math';
+
+import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
 import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
 import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
@@ -15,8 +17,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostCard extends StatefulWidget {
-  PostCard({super.key, required this.postModel});
+  PostCard({super.key, required this.postModel, required this.colorProfile});
 
+  Color colorProfile;
   PostModel postModel;
 
   @override
@@ -24,13 +27,14 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
-  late UserController userController;
+  final userController = Modular.get<UserController>();
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    userController = UserController(widget.postModel.userId);
+    userController.getUser(widget.postModel.userId);
   }
 
   @override
@@ -44,7 +48,7 @@ class _PostCardState extends State<PostCard> {
         return InkWell(
           onTap: () =>  Modular.to.pushNamed("./comments",arguments: postModel),
           child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -56,7 +60,7 @@ class _PostCardState extends State<PostCard> {
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: widget.colorProfile,
                           borderRadius: BorderRadius.circular(50)),
                       child: Center(
                           child: Text(
@@ -97,7 +101,7 @@ class _PostCardState extends State<PostCard> {
                                 borderRadius: BorderRadius.circular(50),
                                 child: (userController.postLike)
                                     ? Icon(
-                                        Icons.favorite_border_outlined,
+                                        Icons.favorite,
                                         color: Colors.red,
                                       )
                                     : Icon(

@@ -1,4 +1,4 @@
-import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/modules/home/lib/model/user.model.dart';
 import 'package:feed_social_page/modules/home/lib/service/user.service.dart';
 import 'package:mobx/mobx.dart';
@@ -8,7 +8,7 @@ class UserController = _UserControllerBase with _$UserController;
 
 abstract class _UserControllerBase with Store {
 
-  UserService service = UserService(client: DioClient());
+  UserService service;
 
   @observable
   bool postLike = false;
@@ -19,11 +19,9 @@ abstract class _UserControllerBase with Store {
   @observable
   UserModel? userModel;
 
-  _UserControllerBase(int id){
-    _initController(id);
-  }
+  _UserControllerBase(this.service);
 
-  _initController(int id) async{
+  getUser(int id) async{
     isLoading = true;
     try {
       userModel = await service.getUserById(id);

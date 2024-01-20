@@ -1,6 +1,7 @@
-import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
 import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
+import 'package:feed_social_page/modules/home/lib/service/comment_service.dart';
 import 'package:feed_social_page/modules/home/lib/service/posts.service.dart';
 import 'package:feed_social_page/modules/home/lib/store/comment_controller.dart';
 import 'package:feed_social_page/utils/colors_app.dart';
@@ -12,18 +13,31 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:provider/provider.dart';
 
-class CommentPage extends StatelessWidget {
+class CommentPage extends StatefulWidget {
   CommentPage({super.key, required this.postModel});
   PostModel postModel;
 
   @override
+  State<CommentPage> createState() => _CommentPageState();
+}
+
+class _CommentPageState extends State<CommentPage> {
+  
+  final commentController = Modular.get<CommentController>();
+
+  @override
+  void initState() {
+    super.initState();
+    commentController.getAllComments(widget.postModel.id);
+  }
+
+  @override
   Widget build(BuildContext context) {
-  final commentController = CommentController(postId: postModel.id);
 
     return Scaffold(
       backgroundColor: ColorApp.bgPrimary,
       appBar: AppBar(
-        backgroundColor: ColorApp.lightBlue,
+        backgroundColor: ColorApp.appBarColor,
         iconTheme: IconThemeData(color: Colors.white),
         leading: IconButton(onPressed: () => Modular.to.pop(), icon: Icon(Icons.arrow_back)),
       ),
@@ -37,10 +51,12 @@ class CommentPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30))),
-                child: PostCard(postModel: postModel)),
+                child: PostCard(
+                  colorProfile: ColorApp.ramdomColor,
+                  postModel: widget.postModel)),
             Expanded(
                 child: Observer(
-              builder: (_) => (commentController.commentsLoading)
+              builder: (_) => (commentController.commentsLoading || commentController.comments.isEmpty)
                   ? ShimmerPost()
                   : ListView.builder(
                       itemCount: commentController.comments.length,
@@ -64,12 +80,16 @@ class CommentPage extends StatelessWidget {
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(50)),
                 child: TextField(
+                  controller: commentController.commentTxt,
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Digite um comentário...",
                       hintStyle: TextStyle(fontSize: 14),
                       suffixIcon: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          commentController.addComment(widget.postModel.id);
+                          commentController.commentTxt.clear();
+                        },
                         icon: Icon(Icons.send, color: Colors.grey),
                       )),
                 ),

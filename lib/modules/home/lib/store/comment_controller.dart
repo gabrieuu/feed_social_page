@@ -1,6 +1,7 @@
-import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
 import 'package:feed_social_page/modules/home/lib/service/comment_service.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'comment_controller.g.dart';
 
@@ -13,16 +14,24 @@ abstract class _CommentControllerBase with Store {
   @observable
   bool commentsLoading = false;
 
-  final service = CommentService(DioClient());
+  final commentTxt = TextEditingController();
 
-  _CommentControllerBase({required int postId}){
-    commentsLoading = true;
-    _initController(postId);
-    commentsLoading = false;
-  }
+  CommentService service;
 
-  _initController(int postId) async{
+  _CommentControllerBase(this.service);
+
+  void getAllComments(int postId) async{
     List<CommentsModel> commentarios = await service.getComments(postId);
     comments.addAll(commentarios);
   }
+
+  addComment(int postId) async{
+    if(commentTxt.text != ""){
+      final comment = CommentsModel(postId: postId, name: "Usuario", email: "usuario@.com", body: commentTxt.text);
+      final response = await service.addComment(comment);
+      comments.insert(0, response);
+    }
+    
+  }
+
 }

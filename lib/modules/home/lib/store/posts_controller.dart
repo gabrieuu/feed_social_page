@@ -1,4 +1,4 @@
-import 'package:feed_social_page/modules/home/lib/client_http/dio_client/dio_client.dart';
+import 'package:feed_social_page/core/client_http/dio_client/dio_client.dart';
 import 'package:feed_social_page/modules/home/lib/model/comments.model.dart';
 import 'package:feed_social_page/modules/home/lib/model/posts.model.dart';
 import 'package:feed_social_page/modules/home/lib/service/posts.service.dart';

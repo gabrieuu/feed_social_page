@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:feed_social_page/modules/home/lib/client_http/client_http.dart';
+import 'package:feed_social_page/core/client_http/client_http.dart';
 
 class DioClient implements ClientHttp{
   var dio = Dio();
