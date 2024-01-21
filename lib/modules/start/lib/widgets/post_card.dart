@@ -1,6 +1,6 @@
 
 import 'package:feed_social_page/modules/start/lib/model/posts.model.dart';
-import 'package:feed_social_page/modules/start/lib/store/users_controller.dart';
+import 'package:feed_social_page/modules/start/lib/store/posts_controller.dart';
 import 'package:feed_social_page/modules/start/lib/views/comments_page.dart';
 import 'package:feed_social_page/modules/start/lib/widgets/shimmer_posts.dart';
 import 'package:flutter/material.dart';
@@ -19,24 +19,13 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
-  final userController = Modular.get<UserController>();
-
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    userController.getUser(widget.postModel.userId);
-  }
-
+  final postController = Modular.get<PostController>();
+  bool postLike = false;
   @override
   Widget build(BuildContext context) {
     final postModel = widget.postModel;
 
     return Observer(builder: (_) {
-      if (userController.isLoading) {
-        return ShimmerPost();
-      } else if (userController.userModel != null) {
         return InkWell(
           onTap: () =>  Modular.to.pushNamed("./comments",arguments: postModel),
           child: Padding(
@@ -46,7 +35,7 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   InkWell(
                     onTap: (){
-                      Modular.to.pushNamed("./profile", arguments: userController.userModel!);
+                      Modular.to.pushNamed("./profile", arguments: postController.usersMap[postModel.userId]);
                     },
                     child: Container(
                       height: 40,
@@ -56,7 +45,7 @@ class _PostCardState extends State<PostCard> {
                           borderRadius: BorderRadius.circular(50)),
                       child: Center(
                           child: Text(
-                        "${userController.userModel?.username[0]}",
+                        "${postController.usersMap[postModel.userId]?.username[0]}",
                         style: const TextStyle(fontSize: 20, color: Colors.white),
                       )),
                     ),
@@ -71,7 +60,7 @@ class _PostCardState extends State<PostCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "${userController.userModel?.username}",
+                                "${postController.usersMap[postModel.userId]?.username}",
                                 style: const TextStyle(fontWeight: FontWeight.w600),
                               ),
                               InkWell(
@@ -88,10 +77,11 @@ class _PostCardState extends State<PostCard> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  userController.curtir();
+                                  postLike = !postLike;
+                                  setState(() {});
                                 },
                                 borderRadius: BorderRadius.circular(50),
-                                child: (userController.postLike)
+                                child: (postLike)
                                     ? const Icon(
                                         Icons.favorite,
                                         color: Colors.red,
@@ -141,9 +131,6 @@ class _PostCardState extends State<PostCard> {
                 ],
               )),
         );
-      } else {
-        return const Center(child: Text("Error loading user"));
-      }
     });
   }
 }

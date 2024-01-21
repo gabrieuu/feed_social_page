@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
           Observer(builder: (_) {
             return Expanded(
                 child: ListView(
+                  padding: EdgeInsets.only(top: 30),
                   children: List.generate(controller.posts.length, (index) {
                     return Column(
                         children: [

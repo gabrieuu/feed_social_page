@@ -29,48 +29,64 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: SizedBox(
-              height: 100,
-              child: Row(
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Center(
-                        child: Text(widget.userModel.username[0], style: TextStyle(fontSize: 40 ,color: ColorApp.bgPrimary),)),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: SizedBox(
+                  height: 100,
+                  child: Row(
                     children: [
-                      Text(
-                        widget.userModel.name,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.purple,
+                            borderRadius: BorderRadius.circular(50)),
+                        child: Center(
+                            child: Text(widget.userModel.username[0], style: TextStyle(fontSize: 40 ,color: ColorApp.bgPrimary),)),
                       ),
-                      Text(
-                        "@${widget.userModel.username}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: ColorApp.bgGreyDark),
+                      const SizedBox(
+                        width: 10,
                       ),
-                      Text(
-                        widget.userModel.email,
-                        style: TextStyle(color: ColorApp.secondColor),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            widget.userModel.name,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          Text(
+                            "@${widget.userModel.username}",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorApp.bgGreyDark),
+                          ),
+                          Text(
+                            widget.userModel.email,
+                            style: TextStyle(color: ColorApp.secondColor),
+                          )
+                        ],
                       )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
-            ),
+              FutureBuilder(
+                    future:
+                        postController.getPostsByUserId(widget.userModel.id),
+                    builder: (_, value) {
+                      if (value.connectionState == ConnectionState.done) {
+                        List<PostModel> posts = value.data!;
+                        return Text("${posts.length} posts");
+                      }else{
+                      return Text("...");
+                      }
+                    })
+              
+            ],
           ),
           const Divider(color: Colors.grey,),
           Expanded(

@@ -41,6 +41,14 @@ mixin _$PostController on _PostControllerBase, Store {
     });
   }
 
+  late final _$getPostsByUserIdAsyncAction =
+      AsyncAction('_PostControllerBase.getPostsByUserId', context: context);
+
+  @override
+  Future<List<PostModel>> getPostsByUserId(int id) {
+    return _$getPostsByUserIdAsyncAction.run(() => super.getPostsByUserId(id));
+  }
+
   @override
   String toString() {
     return '''

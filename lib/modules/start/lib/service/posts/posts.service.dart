@@ -1,12 +1,14 @@
 import 'package:feed_social_page/core/client_http/client_http.dart';
 import 'package:feed_social_page/modules/start/lib/model/posts.model.dart';
+import 'package:feed_social_page/modules/start/lib/service/posts/i_posts.service.dart';
 
 
-class PostService{
+class ConcretePostService implements PostService{
   ClientHttp client;
   
-  PostService(this.client);
+  ConcretePostService({required this.client});
 
+  @override
   Future<List<PostModel>> fetchAllPosts() async{
     const url = "https://jsonplaceholder.typicode.com/posts";
     final response = await client.get(url) as List; 
@@ -14,7 +16,8 @@ class PostService{
     return posts;
   }
 
-  getPostByUserId(int userId) async{
+  @override
+  Future<List<PostModel>> getPostByUserId(int userId) async{
     final url = "https://jsonplaceholder.typicode.com/user/$userId/posts";
     final response = await client.get(url) as List; 
     List<PostModel> posts = response.map((e) => PostModel.fromMap(e)).toList();
