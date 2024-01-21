@@ -47,9 +47,12 @@ class HomePage extends StatelessWidget {
                   children: List.generate(controller.posts.length, (index) {
                     return Column(
                         children: [
-                          PostCard(
-                            colorProfile: ColorApp.ramdomColor,
-                            postModel: controller.posts[index]),
+                          InkWell(
+                            onTap: () =>  Modular.to.pushNamed("./comments",arguments: controller.posts[index]),
+                            child: PostCard(
+                              colorProfile: ColorApp.ramdomColor,
+                              postModel: controller.posts[index]),
+                          ),
                           const Divider(color: Colors.grey,)
                         ],
                       );

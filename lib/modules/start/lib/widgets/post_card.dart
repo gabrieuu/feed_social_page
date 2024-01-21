@@ -26,111 +26,108 @@ class _PostCardState extends State<PostCard> {
     final postModel = widget.postModel;
 
     return Observer(builder: (_) {
-        return InkWell(
-          onTap: () =>  Modular.to.pushNamed("./comments",arguments: postModel),
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: (){
-                      Modular.to.pushNamed("./profile", arguments: postController.usersMap[postModel.userId]);
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: widget.colorProfile,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Center(
-                          child: Text(
-                        "${postController.usersMap[postModel.userId]?.username[0]}",
-                        style: const TextStyle(fontSize: 20, color: Colors.white),
-                      )),
-                    ),
+        return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: (){
+                    Modular.to.pushNamed("./profile", arguments: postController.usersMap[postModel.userId]);
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        color: widget.colorProfile,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Center(
+                        child: Text(
+                      "${postController.usersMap[postModel.userId]?.username[0]}",
+                      style: const TextStyle(fontSize: 20, color: Colors.white),
+                    )),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${postController.usersMap[postModel.userId]?.username}",
-                                style: const TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              InkWell(
-                                  onTap: () {},
-                                  borderRadius: BorderRadius.circular(50),
-                                  child: const Icon(Icons.more_horiz))
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 3),
-                            child: Text("${widget.postModel.body}"),
-                          ),
-                          Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  postLike = !postLike;
-                                  setState(() {});
-                                },
-                                borderRadius: BorderRadius.circular(50),
-                                child: (postLike)
-                                    ? const Icon(
-                                        Icons.favorite,
-                                        color: Colors.red,
-                                      )
-                                    : const Icon(
-                                        Icons.favorite_border_outlined,
-                                      ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => CommentPage(
-                                              postModel: widget.postModel)));
-                                },
-                                borderRadius: BorderRadius.circular(50),
-                                child: const FaIcon(
-                                  FontAwesomeIcons.comments,
-                                  size: 20,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              InkWell(
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "${postController.usersMap[postModel.userId]?.username}",
+                              style: const TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            InkWell(
                                 onTap: () {},
                                 borderRadius: BorderRadius.circular(50),
-                                child: const FaIcon(FontAwesomeIcons.retweet, size: 22),
+                                child: const Icon(Icons.more_horiz))
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 3),
+                          child: Text("${widget.postModel.body}"),
+                        ),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                postLike = !postLike;
+                                setState(() {});
+                              },
+                              borderRadius: BorderRadius.circular(50),
+                              child: (postLike)
+                                  ? const Icon(
+                                      Icons.favorite,
+                                      color: Colors.red,
+                                    )
+                                  : const Icon(
+                                      Icons.favorite_border_outlined,
+                                    ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => CommentPage(
+                                            postModel: widget.postModel)));
+                              },
+                              borderRadius: BorderRadius.circular(50),
+                              child: const FaIcon(
+                                FontAwesomeIcons.comments,
+                                size: 20,
                               ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "5 comments",
-                            style: TextStyle(color: Colors.grey),
-                          )
-                        ],
-                      ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              borderRadius: BorderRadius.circular(50),
+                              child: const FaIcon(FontAwesomeIcons.retweet, size: 22),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          "5 comments",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
                     ),
-                  )
-                ],
-              )),
-        );
+                  ),
+                )
+              ],
+            ));
     });
   }
 }

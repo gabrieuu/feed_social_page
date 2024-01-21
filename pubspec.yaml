@@ -39,7 +39,6 @@ dependencies:
   mobx: ^2.3.0+1
   flutter_mobx: ^2.2.0+2
   font_awesome_flutter: ^10.6.0
-  provider: ^6.1.1
   shimmer: ^3.0.0
   flutter_modular: ^6.3.2
 dev_dependencies:
