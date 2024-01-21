@@ -13,7 +13,7 @@ class InitialPage extends StatelessWidget {
 
     @override
     Widget build(BuildContext context) {
-      return Observer(builder: (_) => (controller.commentsLoading)
+      return Observer(builder: (_) => (controller.postsLoading)
       ? SplashScreen()
       : DefaultTabController(
           length: 3,

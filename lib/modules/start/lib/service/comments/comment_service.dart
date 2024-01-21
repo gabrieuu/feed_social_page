@@ -20,8 +20,8 @@ class ConcreteCommentService implements CommentService{
   @override
   Future<CommentsModel> addComment(CommentsModel comment) async{
     final url = "https://jsonplaceholder.typicode.com/posts/${comment.postId}/comments";
-    var response = await client.post(url, comment.toMap()) as Response;
+    var response = await client.post(url, comment.toMap());
     return CommentsModel.fromMap(response.data);
-
   }
+  
 }

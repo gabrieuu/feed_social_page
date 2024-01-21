@@ -25,19 +25,19 @@ mixin _$PostController on _PostControllerBase, Store {
     });
   }
 
-  late final _$commentsLoadingAtom =
-      Atom(name: '_PostControllerBase.commentsLoading', context: context);
+  late final _$postsLoadingAtom =
+      Atom(name: '_PostControllerBase.postsLoading', context: context);
 
   @override
-  bool get commentsLoading {
-    _$commentsLoadingAtom.reportRead();
-    return super.commentsLoading;
+  bool get postsLoading {
+    _$postsLoadingAtom.reportRead();
+    return super.postsLoading;
   }
 
   @override
-  set commentsLoading(bool value) {
-    _$commentsLoadingAtom.reportWrite(value, super.commentsLoading, () {
-      super.commentsLoading = value;
+  set postsLoading(bool value) {
+    _$postsLoadingAtom.reportWrite(value, super.postsLoading, () {
+      super.postsLoading = value;
     });
   }
 
@@ -53,7 +53,7 @@ mixin _$PostController on _PostControllerBase, Store {
   String toString() {
     return '''
 posts: ${posts},
-commentsLoading: ${commentsLoading}
+postsLoading: ${postsLoading}
     ''';
   }
 }

@@ -17,22 +17,22 @@ abstract class _PostControllerBase with Store {
   PostService service;
 
   @observable
-  bool commentsLoading = false;
+  bool postsLoading = false;
 
   _PostControllerBase({required this.service, required this.userService}){
     _initController();
   }
 
   _initController() async{
-    commentsLoading = true;
+    postsLoading = true;
     await getAllPosts();
     await _loadUsers(posts);
-    commentsLoading = false;
+    postsLoading = false;
   }
 
   Future<void> getAllPosts() async{
     List<PostModel> postagens = await service.fetchAllPosts();
-    var uniqueUserIds = [];
+    List<int> uniqueUserIds = [];
 
     for (var post in postagens) {
       if(!uniqueUserIds.contains(post.userId)){
@@ -40,6 +40,7 @@ abstract class _PostControllerBase with Store {
         posts.add(post);
       }
     }
+    
   }
 
   @action
