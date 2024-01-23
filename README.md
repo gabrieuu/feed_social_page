@@ -16,7 +16,8 @@ O WetGram é um app que simula uma rede social, foi feito em flutter e utilizado
 
 ## 📸 Layout
 
-![Purple App Phone Mockup Sales Marketing Presentation (1)](https://github.com/gabrieuu/feed_social_page/assets/81256082/9d2796ca-c028-4ff8-9e83-9b10080c614c)
+![Purple App Phone Mockup Sales Marketing Presentation (2)](https://github.com/gabrieuu/feed_social_page/assets/81256082/2abb7c15-9b52-48b3-b749-d392bad14d05)
+
 
 
 
