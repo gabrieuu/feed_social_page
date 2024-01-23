@@ -5,7 +5,7 @@ class PostModel {
   int id;
   String title;
   String body;
-  List<CommentsModel> comments = [];
+  String url = "https://source.unsplash.com/random/400x600/?funny";
   
   PostModel(
       {required this.userId,

@@ -37,7 +37,7 @@ class _CommentPageState extends State<CommentPage> {
         iconTheme: const IconThemeData(color: Colors.white),
         leading: IconButton(onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back)),
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,24 +50,25 @@ class _CommentPageState extends State<CommentPage> {
                 child: PostCard(
                   colorProfile: ColorApp.ramdomColor,
                   postModel: widget.postModel)),
-            Expanded(
-                child: Observer(
-              builder: (_) => (commentController.commentsLoading || commentController.comments.isEmpty)
-                  ? ShimmerPost()
-                  : ListView.builder(
-                      itemCount: commentController.comments.length,
-                      itemBuilder: (_, index) {
-                        return Column(
-                          children: [
-                            CommentsCard(
-                                commentModel: commentController.comments[index]),
-                            Divider(
-                              color: Colors.grey[300],
-                            )
-                          ],
-                        );
-                      }),
-            )),
+            Observer(
+                            builder: (_) => (commentController.commentsLoading || commentController.comments.isEmpty)
+              ? ShimmerPost()
+              : ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                  itemCount: commentController.comments.length,
+                  itemBuilder: (_, index) {
+                    return Column(
+                      children: [
+                        CommentsCard(
+                            commentModel: commentController.comments[index]),
+                        Divider(
+                          color: Colors.grey[300],
+                        )
+                      ],
+                    );
+                  }),
+                          ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
